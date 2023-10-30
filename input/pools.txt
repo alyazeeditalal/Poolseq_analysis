@@ -1,0 +1,8 @@
+FANG_1,40
+FUMOZ_1,40
+Pool_Alive_1,48
+Pool_Alive_2,48
+Pool_Alive_3,48
+Pool_Dead_1,48
+Pool_Dead_2,48
+Pool_Dead_3,48
