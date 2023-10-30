@@ -10,3 +10,5 @@ The population genetic analysis will be conducted for all samples and pairwise F
 1- the SNP level 
 2- a determined window size 
 3- Gene-wise    
+
+For bulk segregate analysis (BSA) the pools that should be compared have to be determined in the pipeline. Bulk segregate analysis calculation method in this pipeline are QTL-seq method and G prime method. 
