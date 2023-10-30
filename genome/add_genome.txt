@@ -1,0 +1,2 @@
+#Manually add a genome to the directory
+#wget https://vectorbase.org/common/downloads/Current_Release/AfunestusFUMOZ/fasta/data/VectorBase-65_AfunestusFUMOZ_Genome.fasta
