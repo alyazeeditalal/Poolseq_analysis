@@ -14,7 +14,7 @@ for dir in $input_dir/*; do
 individual=$(basename $(echo $dir))
 
  for fa in $individual; do 
-  #cat $input_dir/${individual}/*_1.fq.gz >  $output_dir/${individual}_1.fq.gz
+  cat $input_dir/${individual}/*_1.fq.gz >  $output_dir/${individual}_1.fq.gz
   cat $input_dir/${individual}/*_2.fq.gz >  $output_dir/${individual}_2.fq.gz
  done
 done 
