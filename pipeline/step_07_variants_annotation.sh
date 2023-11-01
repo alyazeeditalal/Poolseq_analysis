@@ -19,6 +19,6 @@ if [ -s $annot_vcf ]; then
 else 
 echo "generating" $annot_vcf
 
-snpEff $genome_DB -stats ../5_freebayes_variants -v $in_vcf > $annot_vcf 2> $log_snpeff/annotation.log
+snpEff -Xmx8g $genome_DB -stats ../5_freebayes_variants/genes.txt -v $in_vcf > $annot_vcf 2> $log_snpeff/annotation.log
 fi 
 

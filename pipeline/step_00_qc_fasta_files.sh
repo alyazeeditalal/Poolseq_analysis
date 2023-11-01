@@ -11,7 +11,7 @@
 #----------------------------------------------------------------
 
 #Check if *fastqc* files already exist in the output directory
-if [ -e ../0_QC/fasta_qc/*fastqc* ]; then
+if [ -n "$(find ../0_QC/fasta_qc -maxdepth 1 -type f -name '*fastqc*' -print -quit)" ]; then
 #if exist echo a message
     echo "FastQC files already exist. Skipping the command"
 else

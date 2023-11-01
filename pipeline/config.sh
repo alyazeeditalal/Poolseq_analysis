@@ -25,7 +25,7 @@
 #wget https://vectorbase.org/common/downloads/Current_Release/AfunestusFUMOZ/gff/data/VectorBase-65_AfunestusFUMOZ.gff
 
 #Extract genes only GFF file 
-#awk '{if($3=="protein_coding_gene") print $0}' sorted.VectorBase-54_AfunestusFUMOZ.gff > gene.only.gff
+#awk '{if($3=="protein_coding_gene") print $0}' VectorBase-65_AfunestusFUMOZ.gff > gene.only.gff
 
 #Make a directory and call it input 
 #Add input file called pools.txt 
