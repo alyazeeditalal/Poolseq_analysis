@@ -2,8 +2,19 @@
 #----------------------------------------
 #This script is intended to call varaints from the bam files using varscan
 #----------------------------------------
-#location of config file
-source config.sh
+####Varscan variant calling####
+
+#location of varscan 
+varscan='java -jar -Xmx100g ~/programs/varscan-master/VarScan.v2.4.4.jar'
+
+#mpileup file 
+mpileup='../4_varscan_variants/all_samples.mpileup'
+
+#the vcf file 
+vcf_varscan='../4_varscan_variants/all_samples.varscan.vcf'
+
+#samtools log 
+log_varscan='../log/varscan'
 
 #----------------------------------------
 # I will start by creating an mpileup file from the bam files 

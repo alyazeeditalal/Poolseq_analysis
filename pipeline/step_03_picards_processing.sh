@@ -2,9 +2,15 @@
 #----------------------------------------
 #This script is intended to process alignment bams using picard tools
 #----------------------------------------
-#location of config file
-source config.sh
+#location directory of bam files
+map_file='../2_mapping'
 
+#location of output bams 
+picard_bam='../3_processing'
+
+output_dup='../0_QC/bam_dup' #location of duplicate files 
+
+log_align_process='../log/align_process' #Alignment files processing log directory  
 #----------------------------------------
 
 for bam in $map_file/*.bam; do

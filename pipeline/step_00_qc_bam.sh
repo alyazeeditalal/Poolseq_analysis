@@ -3,8 +3,14 @@
 #----------------------------------------
 #This script is intending to produce QC report for all the bam file       
 #----------------------------------------
-#location of config file
-source config.sh
+
+#location of picard bams 
+picard_bam='../3_processing'
+
+#location of output bams 
+bams_QC='../0_QC/bams_QC'
+
+log_bamqc='../log/bamqc'
 #----------------------------------------
 
 for bam in $picard_bam/*-sorted-md-rg.bam; do

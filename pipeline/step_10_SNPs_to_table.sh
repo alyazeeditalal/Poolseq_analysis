@@ -3,8 +3,11 @@
 #This script will use gatk tools to convert the SNPs to a table
 #----------------------------------------
 
-#location of config file
-source config.sh
+vcf_to_table="../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.snps.vcf"
+
+indels_to_table='../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.indels.vcf'
+
+log_vcf_table='../log/vcf_table'
 
 #----------------------------------------
 #Convert the snps to table

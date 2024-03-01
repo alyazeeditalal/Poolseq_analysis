@@ -18,7 +18,8 @@ for (lib in libraries_to_install) {
 
 # Install QTLseqr from GitHub
 if (!is_library_installed("QTLseqr")) {
-  devtools::install_github("bmansfeld/QTLseqr")
+ 
+ 
 }
 
 # Print installation status

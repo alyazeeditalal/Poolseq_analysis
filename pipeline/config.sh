@@ -13,8 +13,7 @@
 #mkdir ../genome
 
 #Manually add a genome to the directory
-#wget https://vectorbase.org/common/downloads/Current_Release/AfunestusFUMOZ/fasta/data/VectorBase-65_AfunestusFUMOZ_Genome.fasta
-
+#wget http://ftp.ensemblgenomes.org/pub/metazoa/release-57/fasta/anopheles_gambiae/dna/Anopheles_gambiae.AgamP4.dna.toplevel.fa.gz
 
 # Download the latest version of the genome annotation 
 # in a newly created directory called annotation
@@ -22,10 +21,10 @@
 #mkdir ../annotation
 
 #Manually add annotation file 
-#wget https://vectorbase.org/common/downloads/Current_Release/AfunestusFUMOZ/gff/data/VectorBase-65_AfunestusFUMOZ.gff
+#wget https://ftp.ensemblgenomes.ebi.ac.uk/pub/metazoa/release-57/gff3/anopheles_gambiae/Anopheles_gambiae.AgamP4.57.gff3.gz
 
 #Extract genes only GFF file 
-#awk '{if($3=="protein_coding_gene") print $0}' VectorBase-65_AfunestusFUMOZ.gff > gene.only.gff
+#awk '{if($3=="gene") print $0}' Anopheles_gambiae.AgamP4.57.gff3 > gene.only.gff
 
 #Make a directory and call it input 
 #Add input file called pools.txt 
@@ -34,60 +33,35 @@
 #-----------------------------------------------------
 ####fastqc####
 
-#output directory for the fastQC files 
-#out_fastqc='../0_QC/fasta_qc'
+#Reads extension
+#input_fastqc='../1_data/*.fq.gz'
 
 #-----------------------------------------------------
 ####indexing the genome####
 
 #location of the genome
-loc_genome='../genome/VectorBase-65_AfunestusFUMOZ_Genome.fasta'
+loc_genome='../genome/Anopheles_gambiae.AgamP4.dna.toplevel.fa'
 
 #-----------------------------------------------------
 ####alignment to genome####
 
-#location of the input reads directory
-input_reads='../1_data/'
+#Reads extension  
+fa_ex_1='_1.fq.gz'
+fa_ex_2='_2.fq.gz'
 
-#location of output reads 
-map_file='../2_mapping'
-#-----------------------------------------------------
-####picard processing####
-
-#location directory of bam files
-input_bam='../2_mapping'
-
-#location of output bams 
-picard_bam='../3_processing'
-
-output_dup='../0_QC/bam_dup' #location of duplicate files 
-
-log_align_process='../log/align_process' #Alignment files processing log directory  
-#-----------------------------------------------------
-####bam_qc####
-
-#location of output bams 
-bams_QC='../0_QC/bams_QC'
-
-log_bamqc='../log/bamqc'
-
-#input is the picard bam
 #-----------------------------------------------------
 ####freebayes variant calling####
 
-## location of output vcf file
-vcf_freebayes='../5_freebayes_variants/pooled.continuous.freebayes.parallel.vcf'
-
-## location of temporary directory 
-tmp="../../../lstm_scratch"
-
-#log files 
-log_freebayes='../log/freebayes'
+## location of directory to save temporary files 
+tmp="../../../../lstm_scratch"
 
 #-----------------------------------------------------
 ####variants annotation using snpEff####
 
-#If the database is not added to the snpEff database then it has to be added manually. 
+#find the name of the species database in the snpeff database 
+#java -jar snpEff.jar databases | grep -i gambiae
+
+#If the database is not added to the snpEff database then it has to be added manually following the steps outlined below. 
 #To do so find the snpEff config file 
 
 #find $PWD -type f -name snpEff.config   #This will identify the config file 
@@ -96,50 +70,25 @@ log_freebayes='../log/freebayes'
 #Download the fasta and gff file 
 #mkdir -p data/A.funestus
 #cd /path/to/snpEff/data/A.funestus
-#wget https://vectorbase.org/common/downloads/Current_Release/AfunestusFUMOZ/gff/data/VectorBase-65_AfunestusFUMOZ.gff 
-#wget https://vectorbase.org/common/downloads/Current_Release/AfunestusFUMOZ/fasta/data/VectorBase-65_AfunestusFUMOZ_Genome.fasta
-#mv VectorBase-65_AfunestusFUMOZ_Genome.fasta sequences.fa
-#mv VectorBase-65_AfunestusFUMOZ.gff genes.gff
+#wget gff
+#wget fasta
+#mv fasta sequences.fa
+#mv gff genes.gff
 
-genome_DB='A.funestus'
+genome_DB='Anopheles_gambiae'
 log_snpeff='../log/snpeff'
 
-#input vcf
-in_vcf='../5_freebayes_variants/pooled.continuous.freebayes.parallel.vcf'
-
-#annotated vcf
-annot_vcf='../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.vcf'
 #-----------------------------------------------------
-####variants stats####
+#####variants filteration#####
 
-#assign a stat ouptut
-stat_output='../0_QC/vcf_stat' 
-
-#-----------------------------------------------------
-####VCF to table####
-
-#Determine a vcf file path depending on the desired variant calling method
-vcf_to_table="../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.snps.vcf"
-
-indels_to_table='../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.indels.vcf'
-
-log_vcf_table='../log/vcf_table'
-
+#find $PWD -type f -name vcfEffOnePerLine.pl to find the oneperline script
+#location of theone perline script   
+oneperline='/home/alyazeedit/miniconda3/envs/poolseq/share/snpsift-5.1-0/scripts/vcfEffOnePerLine.pl'
 #-----------------------------------------------------
 ####Fst, diversity and allele frequency difference####
 
-#In vcf file 
-vcf_input='../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.snps.vcf'
-indel_input='../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.indels.vcf'
-
 #gene regions gff 
 genes_only='../annotation/gene.only.gff'
-
-#out directory
-out_dir='../7_population_genetics'
-
-#log file
-log_grenedalf='../log/grenedalf/'
 
 #pool sizes
 pool_sizes='../input/pools.txt'
@@ -158,37 +107,12 @@ min_cov='10'
 min_count='2'
 
 #-----------------------------------------------------
-#####variants filteration#####
 
-#find $PWD -type f -name vcfEffOnePerLine.pl to find the oneperline script
-#location of theone perline script   
-oneperline='/home/alyazeedit/miniconda3/envs/poolseq/share/snpsift-5.1-0/scripts/vcfEffOnePerLine.pl'
+popoolation2='~/programs/popoolation2_1201'
 
-#output files containing oneperline effect
-snps_oneperline_file='../5_freebayes_variants/snps_oneperline.effect.txt'
-
-indels_oneperline_file='../5_freebayes_variants/indels_oneperline.effect.txt'
-####Varscan variant calling####
-
-#location of varscan 
-varscan='java -jar -Xmx100g ~/programs/varscan-master/VarScan.v2.4.4.jar'
-
-#mpileup file 
-mpileup='../4_varscan_variants/all_samples.mpileup'
-
-#the vcf file 
-vcf_varscan='../4_varscan_variants/all_samples.varscan.vcf'
-
-#samtools log 
-log_varscan='../log/varscan'
-
-#-----------------------------------------------------
-####bcftool variant calling####
-
-## location of output vcf file
-vcf_bcftools='../6_bcftools_variants/all_samples.bcftools.vcf'
-log_bcftools='../log/bcftools'
-
+'5-1,6-8,6-1,5-8'
+population='7-4,9-11,9-4,7-11'
+'12-3, 10-2'
 #-----------------------------------------------------
 #color parameters for the pipeline messages 
 

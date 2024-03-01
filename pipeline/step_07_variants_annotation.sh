@@ -6,6 +6,11 @@
 #location of config file
 source config.sh
 
+#input vcf
+in_vcf='../5_freebayes_variants/pooled.continuous.freebayes.parallel.vcf'
+
+#annotated vcf
+annot_vcf='../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.vcf'
 #----------------------------------------
 
 #Building the database for a new genome if the database doesn't exist

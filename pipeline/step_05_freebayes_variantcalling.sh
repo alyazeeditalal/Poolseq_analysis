@@ -6,6 +6,11 @@
 #location of config file
 source config.sh
 
+## location of output vcf file
+vcf_freebayes='../5_freebayes_variants/pooled.continuous.freebayes.parallel.vcf'
+
+#log files 
+log_freebayes='../log/freebayes'
 #----------------------------------------
 #indexing the genome to produce fai indexed genome 
 if [ -s "${loc_genome}.fai" ]; then

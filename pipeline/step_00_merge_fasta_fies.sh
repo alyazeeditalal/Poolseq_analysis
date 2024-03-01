@@ -7,7 +7,7 @@
 #output directory
 output_dir='../1_data' #Directory were the fasta files will be saved 
 #input directory
-input_dir='../sequences' #Directory contaiing subdirectories with fasta files 
+input_dir='../../01.RawData' #Directory contaiing subdirectories with fasta files 
 
 #merge fasta files that are of the same pair 
 for dir in $input_dir/*; do 

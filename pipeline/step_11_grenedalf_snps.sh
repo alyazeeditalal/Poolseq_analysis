@@ -3,6 +3,15 @@
 #----------------------------------------------------------------
 # This script will be used to convert the vcf file to a sync file 
 #----------------------------------------------------------------
+#In vcf file 
+vcf_input='../5_freebayes_variants/pooled.continuous.freebayes.parallel.snpeff.snps.vcf'
+
+#out directory
+out_dir='../7_population_genetics/'
+
+#log file
+log_grenedalf='../log/grenedalf/'
+
 #location of config file
 source config.sh
 

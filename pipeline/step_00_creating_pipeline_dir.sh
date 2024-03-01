@@ -14,7 +14,8 @@ mkdir ../4_varscan_variants #directory for varscan vcf
 mkdir ../5_freebayes_variants #directory for freebayes vcf 
 mkdir ../6_bcftools_variants #directory for bcftools vcf 
 mkdir ../7_population_genetics #directry for the population genetics
-mkdir ../8_BSA_analysis #directory for BSA analysis
+mkdir -p ../8_BSA_analysis/results/snps #directory for BSA analysis
+mkdir -p ../8_BSA_analysis/plots/snps #directory for BSA analysis
 
 #create a directory for log files
 mkdir -p ../log/fasta_qc #fastqc logs 

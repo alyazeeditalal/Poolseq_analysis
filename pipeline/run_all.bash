@@ -49,8 +49,8 @@ vcf_to_table='step_10_SNPs_to_table.sh'
 #location of grenedalf snps 
 grenedalf_snps='step_11_grenedalf_snps.sh'
 
-#location of grenedalf indel
-#grenedalf_indels='step_12_grenedalf_indels.sh'
+#location of cmh
+#cmh='step_12_cmh.popoolation.sh'
 #-----------------------------------------------------
 
 echo "${YELLOW}
@@ -62,10 +62,10 @@ echo "${GREEN}
 ..........Making pipeline directories ..........." 
 bash $make_dir
 
-#Run fastqc 
-echo "${BLUE}
-..........Running fastqc ..........." 
-bash $fastqc 
+##Run fastqc 
+#echo "${BLUE}
+#..........Running fastqc ..........." 
+#bash $fastqc 
 
 #Run BWA indexing
 echo "${GREEN}
@@ -127,16 +127,10 @@ echo "${GREEN}
 .........running grenedalf population genetics analyses on SNPs........." 
 bash $grenedalf_snps
 
-##running population genetics analyses 
-#echo "${RED}
-#.........running grenedalf population genetics analyses on indels........." 
-#bash $grenedalf_indels
-
 #running multiQC 
 echo "${BLUE}
 .........Multi QC........." 
-multiqc ../0_QC --outdir ../0_QC 2> ../log/multiqc.log
-
+multiqc ../0_QC --outdir ../0_QC/ 2> ../log/multiqc.log
 
 echo "${YELLOW} 
 .......ANALYSIS IS COMPLETE....."

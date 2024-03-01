@@ -1,0 +1,12 @@
+../3_processing/AL101B_Red-sorted-md-rg.bam
+../3_processing/AL114A_Blue-sorted-md-rg.bam
+../3_processing/AL17F2_60-sorted-md-rg.bam
+../3_processing/AL17F2_75-sorted-md-rg.bam
+../3_processing/AL5F1_25-sorted-md-rg.bam
+../3_processing/AL5F1_30-sorted-md-rg.bam
+../3_processing/DE101B_White-sorted-md-rg.bam
+../3_processing/DE114A_Green-sorted-md-rg.bam
+../3_processing/DE17F2_15-sorted-md-rg.bam
+../3_processing/DE17F2_20-sorted-md-rg.bam
+../3_processing/DE5F1_3-sorted-md-rg.bam
+../3_processing/DE5F1_8-sorted-md-rg.bam

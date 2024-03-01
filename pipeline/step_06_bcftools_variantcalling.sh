@@ -3,8 +3,9 @@
 #This script is intended to call varaints from the bam files 
 #----------------------------------------
 
-#location of config file
-source config.sh
+## location of output vcf file
+vcf_bcftools='../6_bcftools_variants/all_samples.bcftools.vcf'
+log_bcftools='../log/bcftools'
 
 #----------------------------------------
 #create a bam list to run samtools mpileup 
