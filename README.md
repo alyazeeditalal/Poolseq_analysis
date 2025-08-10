@@ -4,7 +4,7 @@
 [![Language: Bash](https://img.shields.io/badge/Language-Bash-green.svg)](https://www.gnu.org/software/bash/)
 [![Bioinformatics](https://img.shields.io/badge/Field-Bioinformatics-blue.svg)](https://en.wikipedia.org/wiki/Bioinformatics)
 
-A bash-based bioinformatics pipeline for analyzing pooled sequencing data with maximum flexibility for customization and integration across computing environments.
+A bash-based bioinformatics pipeline for analyzing pooled sequencing data with maximum flexibility for customisation and integration across computing environments.
 
 The pipeline was used to produce results in the following papers 
 
@@ -386,5 +386,5 @@ If you use this pipeline, please cite the tools and our papers:
 - [FreeBayes](https://github.com/freebayes/freebayes)
 - [SnpEff](https://github.com/pcingola/SnpEff)
 - [grenedalf](https://github.com/lczech/grenedalf)
-- SAMtools, BCFtools, MultiQC files
+- SAMtools, BCFtools, MultiQC 
 
