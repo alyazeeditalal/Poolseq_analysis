@@ -15,18 +15,18 @@ Options:
   --highBulk=<highBulk>            High bulk sample name
   --lowBulk=<lowBulk>              Low bulk sample name
   --lowBulk_size=<lowbulksize>     Low bulk size (numeric)
-  --highBulk_size=<highbulksize>   Hight bulk size (numeric)
-  --windowSize=<windowSize>        Analaysis window size (numeric)
+  --highBulk_size=<highbulksize>   High bulk size (numeric)
+  --windowSize=<windowSize>        Analysis window size (numeric)
   --output=<outputfile>            path to the results output directory (path)
-  --plot_path=<path_to_plots>      path to the plots potput directory (path)
+  --plot_path=<path_to_plots>      path to the plots output directory (path)
 "
 
 #Parse command-line arguments using docopt
 args <- docopt(usage)
 
-# Convert hbsize and lbsize to numeric
-hbsize <- as.numeric(args$lowBulk_size)
-lbsize <- as.numeric(args$highBulk_size)
+# Convert to numeric - FIXED: correct variable assignment
+hbsize <- as.numeric(args$highBulk_size)  # HIGH bulk size
+lbsize <- as.numeric(args$lowBulk_size)   # LOW bulk size
 
 #load the data 
 data <- importFromGATK(args$rawData, 
@@ -37,9 +37,7 @@ data <- importFromGATK(args$rawData,
 #print head of the data 
 print(head(data))
 
-#save(data, file = "~/Documents/LSTM_Postdoc/FANGvsFUMOZ_pool_seq/All.data.RData")
-
-#Filtering SNPs using default parameters as in the 
+#Filtering SNPs using default parameters
 df_filt <-
   filterSNPs(
     SNPset = data,
@@ -70,7 +68,7 @@ df_filt <- runGprimeAnalysis(SNPset = df_filt,
 print(head(df_filt))
 
 #Get results 
-results <- getQTLTable(SNPset = df_filt, method = "Gprime",alpha = 0.1, export = FALSE)
+results <- getQTLTable(SNPset = df_filt, method = "Gprime", alpha = 0.1, export = FALSE)
 
 #print
 print(head(results))
@@ -97,11 +95,11 @@ write.table(df_filt, file = raw_file, row.names = F, sep = ",")
 
 ##Producing and saving the plots 
 
-#if output directory is not assigned use current working directory
+#if plot directory is not assigned use current working directory - FIXED
 if (is.null(args$plot_path)) {
   plot_dir <- getwd()
 } else {
-  plot_dir <- args$output
+  plot_dir <- args$plot_path  # FIXED: was args$output
 }
 
 #Assign a SNP distribution file
@@ -128,3 +126,7 @@ pdf(Gprime_dist, width = 11, height = 8.5)  # Width > Height (landscape)
 p3 <- plotQTLStats(SNPset = df_filt, var = "Gprime", plotThreshold = TRUE, q = 0.01)
 p3
 dev.off()
+
+cat("BSA analysis completed successfully!\n")
+cat("Results saved to:", output_dir, "\n")
+cat("Plots saved to:", plot_dir, "\n")

@@ -2,6 +2,16 @@
 #-----------------------------------------------------
 #This script links all the scripts in one pipelie 
 #-----------------------------------------------------
+#Activate conda environment
+#!/bin/bash
+#-----------------------------------------------------
+# Activate conda environment
+if [[ $CONDA_DEFAULT_ENV != "poolseq" ]]; then
+    echo "Activating poolseq environment..."
+    conda activate poolseq
+fi
+
+#-----------------------------------------------------
 #location of config file
 source config.sh
 
@@ -25,32 +35,24 @@ picard='step_03_picards_processing.sh'
 #location of the bam qc 
 bam_qc='step_00_qc_bam.sh'
 
-#location of the varscan script
-varscan='step_04_varscan_variantcalling.sh'
-
 #location of freebayes
-freebayes='step_05_freebayes_variantcalling.sh'
-
-#location of bcftools 
-bcftools='step_06_bcftools_variantcalling.sh'
+freebayes='step_04_freebayes_variantcalling.sh'
 
 #location of variants annotation 
-variants_annotation='step_07_variants_annotation.sh'
+variants_annotation='step_05_variants_annotation.sh'
 
 #location of variants filteration 
-variants_filt='step_08_variants_filt.sh'
+variants_filt='step_06_variants_filt.sh'
 
 #location of variants filteration
-variants_stat='step_09_variants_stat.sh'
+variants_stat='step_07_variants_stat.sh'
 
 #location of vcf to table 
-vcf_to_table='step_10_SNPs_to_table.sh' 
+vcf_to_table='step_08_SNPs_to_table.sh' 
 
 #location of grenedalf snps 
-grenedalf_snps='step_11_grenedalf_snps.sh'
+grenedalf_snps='step_09_grenedalf_snps.sh'
 
-#location of cmh
-#cmh='step_12_cmh.popoolation.sh'
 #-----------------------------------------------------
 
 echo "${YELLOW}
@@ -62,10 +64,10 @@ echo "${GREEN}
 ..........Making pipeline directories ..........." 
 bash $make_dir
 
-##Run fastqc 
-#echo "${BLUE}
-#..........Running fastqc ..........." 
-#bash $fastqc 
+#Run fastqc 
+echo "${BLUE}
+..........Running fastqc ..........." 
+bash $fastqc 
 
 #Run BWA indexing
 echo "${GREEN}
@@ -87,20 +89,10 @@ echo "${BLUE}
 ..........Running quality check of bam files.........." 
 bash $bam_qc
 
-##Running variant calling using varscan
-#echo "${BLUE}
-#..........Running varscan............" 
-#bash $varscan
-
 #Running variant calling using freebayes
 echo "${GREEN}
 ..........Running freebayes.........." 
 bash $freebayes
-
-##Running variant calling using bcftools
-#echo "${RED}
-#..........Running bcftools..........." 
-#bash $bcftools
 
 #Running the variants annotation 
 echo "${BLUE}

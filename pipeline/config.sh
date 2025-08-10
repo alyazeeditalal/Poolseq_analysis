@@ -53,7 +53,7 @@ fa_ex_2='_2.fq.gz'
 ####freebayes variant calling####
 
 ## location of directory to save temporary files 
-tmp="../../../../lstm_scratch"
+tmp="/tmp"
 
 #-----------------------------------------------------
 ####variants annotation using snpEff####
@@ -83,7 +83,7 @@ log_snpeff='../log/snpeff'
 
 #find $PWD -type f -name vcfEffOnePerLine.pl to find the oneperline script
 #location of theone perline script   
-oneperline='/home/alyazeedit/miniconda3/envs/poolseq/share/snpsift-5.1-0/scripts/vcfEffOnePerLine.pl'
+oneperline='/Users/talal.alyazeedi/miniforge3/envs/poolseq/share/snpeff-5.2-1/scripts/vcfEffOnePerLine.pl'
 #-----------------------------------------------------
 ####Fst, diversity and allele frequency difference####
 
@@ -107,13 +107,6 @@ min_cov='10'
 min_count='2'
 
 #-----------------------------------------------------
-
-popoolation2='~/programs/popoolation2_1201'
-
-'5-1,6-8,6-1,5-8'
-population='7-4,9-11,9-4,7-11'
-'12-3, 10-2'
-#-----------------------------------------------------
 #color parameters for the pipeline messages 
 
 YELLOW=`tput setaf 3 bold`
@@ -125,3 +118,4 @@ BLUE=`tput setaf 4 bold`
 GREEN=`tput setaf 10 bold`
 
 rest=`tput init`
+
